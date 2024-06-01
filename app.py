@@ -11,7 +11,7 @@ led_pin = 18
 GPIO.setup(led_pin, GPIO.OUT)
 
 # MJPEG Streamer URL
-STREAM_URL = 'http://<Raspberry_Pi_IP>:8080/?action=stream'
+STREAM_URL = 'http://192.168.2.169:8080/?action=stream'
 
 # Dummy user credentials
 USERNAME = 'admin'
