@@ -3,17 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title>Raspberry Pi Camera Stream</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h1, h2 {
+            text-align: center;
+            margin: 10px 0;
+        }
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .button-row {
+            display: flex;
+            justify-content: center;
+            margin: 5px;
+        }
+        .button-row .button {
+            margin: 0 5px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .logout {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Raspberry Pi Camera Stream</h1>
-    <img src="{{ stream_url }}" width="640" height="480" />
+    <div class="video-container">
+        <img src="{{ stream_url }}" width="640" height="480" />
+    </div>
+
+    <h2>Motor Control</h2>
+    <div class="button-container">
+        <div class="button-row">
+            <form method="post" action="/control_motor">
+                <button class="button" type="submit" name="direction" value="up">Up</button>
+            </form>
+        </div>
+        <div class="button-row">
+            <form method="post" action="/control_motor">
+                <button class="button" type="submit" name="direction" value="left">Left</button>
+            </form>
+            <form method="post" action="/stop_motor">
+                <button class="button" type="submit">Stop</button>
+            </form>
+            <form method="post" action="/control_motor">
+                <button class="button" type="submit" name="direction" value="right">Right</button>
+            </form>
+        </div>
+        <div class="button-row">
+            <form method="post" action="/control_motor">
+                <button class="button" type="submit" name="direction" value="down">Down</button>
+            </form>
+        </div>
+    </div>
 
     <h2>GPIO Control</h2>
     <form method="post" action="/toggle_led">
-        <button type="submit" name="state" value="on">Turn LED On</button>
-        <button type="submit" name="state" value="off">Turn LED Off</button>
+        <button class="button" type="submit" name="state" value="on">Turn LED On</button>
+        <button class="button" type="submit" name="state" value="off">Turn LED Off</button>
     </form>
-    <a href="/logout">Logout</a>
-	<br>
+
+    <div class="logout">
+        <a href="/logout">Logout</a>
+    </div>
 </body>
 </html>
