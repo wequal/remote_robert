@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raspberry Pi Camera Stream</title>
+</head>
+<body>
+    <h1>Raspberry Pi Camera Stream</h1>
+    <img src="{{ stream_url }}" width="640" height="480" />
+
+    <h2>GPIO Control</h2>
+    <form method="post" action="/toggle_led">
+        <button type="submit" name="state" value="on">Turn LED On</button>
+        <button type="submit" name="state" value="off">Turn LED Off</button>
+    </form>
+</body>
+</html>
